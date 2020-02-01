@@ -4,3 +4,9 @@
   border-right: $gridlines;
   border-bottom: $gridlines;
 }
+
+@media (max-width: 768px) {
+  .gridCell {
+    margin-bottom: 0;
+  }
+}

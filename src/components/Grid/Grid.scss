@@ -1,4 +1,14 @@
 .grid {
   border-left: $gridlines;
   border-top: $gridlines;
+
+  .container {
+    flex-wrap: nowrap;
+  }
+}
+
+@media (max-width: 768px) {
+  .row {
+    margin-bottom: 0;
+  }
 }

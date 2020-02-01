@@ -2,8 +2,8 @@ import React from 'react';
 import logo from './logo.svg';
 import Canvas from './components/Canvas/Canvas';
 import Toolbar from './components/Toolbar/Toolbar';
-import './App.scss';
 import './paint.scss';
+import './App.scss';
 
 function App() {
   return (
