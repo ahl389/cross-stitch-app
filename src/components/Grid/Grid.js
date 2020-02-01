@@ -4,8 +4,23 @@ import GridCell from '../GridCell/GridCell';
 class Grid extends Component {
     constructor(props) {
         super(props);
+
+        this.state = {
+            drawing: false
+        }
+
         this.rows = 50;
         this.columns = 50;
+        this.beginDrawing = this.beginDrawing.bind(this);
+        this.endDrawing = this.endDrawing.bind(this);
+    }
+
+    beginDrawing() {
+        this.setState({drawing: true})
+    }
+
+    endDrawing() {
+        this.setState({drawing: false})
     }
 
     generateCells(r) {
@@ -13,7 +28,13 @@ class Grid extends Component {
 
         for (let c=0; c < this.columns; c++) {
             cells.push(
-                <GridCell key={c} row={r} col={c} />
+                <GridCell 
+                    key={c} 
+                    row={r} 
+                    col={c} 
+                    drawing={this.state.drawing} 
+                    beginDrawing={this.beginDrawing}
+                    endDrawing={this.endDrawing} />
             )
         }
 
@@ -39,10 +60,8 @@ class Grid extends Component {
     render(){
         return (
             // child components go here
-            <div className="module grid"> 
-                <div class = "container">
-                    {this.generateRows()}
-                </div>
+            <div className="module grid" onMouseLeave={this.endDrawing}> 
+                {this.generateRows()}
             </div>
             
         )
