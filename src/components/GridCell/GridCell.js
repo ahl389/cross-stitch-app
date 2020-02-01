@@ -1,5 +1,4 @@
 import React , { Component } from 'react';
-import './GridCell.css'
 
 class GridCell extends Component { 
     constructor(props){
