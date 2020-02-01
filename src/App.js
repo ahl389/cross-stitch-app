@@ -14,7 +14,9 @@ function App() {
             </div>
 
             <div className="module w75">
-                <Canvas />
+                <div class = "container">
+                    <Canvas />
+                </div>
             </div>
         </div>
     </section>

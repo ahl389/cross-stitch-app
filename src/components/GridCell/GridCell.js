@@ -6,7 +6,7 @@ class GridCell extends Component {
       return (
           // child components go here
         
-        <div className="GridCell ">
+        <div className="module gridCell ">
         </div>
           
       )

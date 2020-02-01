@@ -6,9 +6,11 @@ class Canvas extends Component {
     
     render(){
         return (
-            // child components go here
-            <Grid />
-          
+            <div class = "module w100">
+                <div class = "container">
+                    <Grid />
+                </div>
+            </div>
         )
     }
 }
