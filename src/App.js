@@ -8,9 +8,11 @@ import './App.scss';
 function App() {
   return (
     <section className="banner">
-        <div className="container">
+        <div className="container-extender">
             <div className="module w25">
-                <Toolbar />
+                <div className="container">
+                    <Toolbar />
+                </div>
             </div>
 
             <div className="module w75">
