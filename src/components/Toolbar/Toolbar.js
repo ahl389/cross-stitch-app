@@ -9,6 +9,7 @@ class Toolbar extends Component {
                     {
                         // Show Mode Switch option handler always
                         <OptionHandler
+                            mode={this.props.mode}
                             switchMode={this.props.switchMode}
                             label='Mode'
                             options={['Select', 'Stitch']} />

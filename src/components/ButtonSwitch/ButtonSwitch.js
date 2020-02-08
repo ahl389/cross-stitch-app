@@ -11,12 +11,18 @@ class ButtonSwitch extends Component {
         this.props.switchFunctionality(this.props.type);
     }
 
-    render(){
+    render() {
+        console.log(this.props.mode)
+        console.log(this.props.label)
+        const selected = this.props.mode === this.props.type ? 'switchSelected' : '';
+        const classNames = `module buttonSwitch mrs pxs ${selected}`
+
         return (
-            <div className = "module buttonSwitch mrs" onClick={this.handleClick}>
+            <div className={classNames} onClick={this.handleClick}>
+                {this.props.label}
             </div>
         )
-  }
+    }
 }
 
 export default ButtonSwitch;
