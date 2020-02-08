@@ -5,8 +5,7 @@ class GridCell extends Component {
         super(props);
 
         this.state = {
-            fill: '#ffffff',
-            selected: false
+            fill: '#ffffff'
         }
 
         this.select = this.select.bind(this);
@@ -18,9 +17,7 @@ class GridCell extends Component {
 
     select() {
         if (this.props.mode === 'select') {
-            this.setState({
-                selected: true
-            })
+            this.props.select(this.props.row, this.props.col);
         }
     }
 
@@ -31,9 +28,11 @@ class GridCell extends Component {
     }
 
     handleDown() {
-        // when mouse is depressed, change the background, and set parent state to "drawing: true"
-        this.paintCell()
-        this.props.beginDrawing();
+        if (this.props.mode === 'stitch') {
+            // when mouse is depressed, change the background, and set parent state to "drawing: true"
+            this.paintCell()
+            this.props.beginDrawing();
+        }
     }
 
     handleOver() {
@@ -50,7 +49,8 @@ class GridCell extends Component {
     }
 
     render() {
-        const classNames = `module gridCell ${this.state.selected ? 'gridCellSelected' : ''}`;
+        const classNames = `module gridCell ${this.props.target ? 'gridCellSelected' : ''}`;
+
         return (
             <div
                 className={classNames}

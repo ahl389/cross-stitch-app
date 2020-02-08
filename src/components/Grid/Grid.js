@@ -6,13 +6,20 @@ class Grid extends Component {
         super(props);
 
         this.state = {
-            drawing: false
+            drawing: false,
+            target: [null, null]
         }
 
         this.rows = 50;
         this.columns = 50;
+        this.select = this.select.bind(this);
         this.beginDrawing = this.beginDrawing.bind(this);
         this.endDrawing = this.endDrawing.bind(this);
+    }
+
+    select(row, col) {
+        console.log('deselcting')
+        this.setState({ target: [row, col] })
     }
 
     beginDrawing() {
@@ -27,6 +34,12 @@ class Grid extends Component {
         let cells = [];
 
         for (let c = 0; c < this.columns; c++) {
+            let target = false;
+
+            if ((this.state.target[0] === r && this.state.target[1] === c) && this.props.mode !== 'stitch') {
+                target = true;
+            }
+
             cells.push(
                 <GridCell
                     key={c}
@@ -35,6 +48,8 @@ class Grid extends Component {
                     drawing={this.state.drawing}
                     beginDrawing={this.beginDrawing}
                     endDrawing={this.endDrawing}
+                    select={this.select}
+                    target={target}
                     mode={this.props.mode} />
             )
         }
