@@ -5,7 +5,8 @@ class GridCell extends Component {
         super(props);
 
         this.state = {
-            fill: '#ffffff'
+            fill: '#ffffff',
+            stitch: false
         }
 
         this.select = this.select.bind(this);
@@ -16,14 +17,15 @@ class GridCell extends Component {
     }
 
     select() {
-        if (this.props.mode === 'select') {
+        if (this.props.mode === 'select' && this.state.stitch) {
             this.props.select(this.props.row, this.props.col);
         }
     }
 
     paintCell() {
         this.setState({
-            fill: '#79cdcd'
+            fill: '#79cdcd',
+            stitch: true
         });
     }
 
