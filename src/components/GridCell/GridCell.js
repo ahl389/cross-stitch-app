@@ -51,7 +51,7 @@ class GridCell extends Component {
     }
 
     render() {
-        const classNames = `module gridCell ${this.props.target ? 'gridCellSelected' : ''}`;
+        const classNames = `module gridCell ${this.props.target ? 'gridCellSelected' : ''} ${this.state.stitch && this.props.mode === 'select' ? 'stitch' : ''}`;
 
         return (
             <div
@@ -61,7 +61,19 @@ class GridCell extends Component {
                 onMouseOver={this.handleOver}
                 onMouseUp={this.handleUp}
                 style={{ backgroundColor: this.state.fill }}>
+
+                {
+                    this.props.target
+                        ? <div className="selectBox">
+                            <div className="selectCorner cornerTop"></div>
+                            <div className="selectCorner cornerRight"></div>
+                            <div className="selectCorner cornerBottom"></div>
+                            <div className="selectCorner cornerLeft"></div>
+                        </div>
+                        : ''
+                }
             </div>
+
 
         )
     }

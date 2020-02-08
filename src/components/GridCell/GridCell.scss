@@ -3,20 +3,49 @@
   height: 15px;
   border-right: $gridlines;
   border-bottom: $gridlines;
+  position: relative;
 }
 
-.gridCellSelected {
-    position: relative;
+.selectCorner {
+    content: "";
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border: 1px solid #07a0f8;
+    box-sizing: border-box;
+    background-color: white;
+    z-index: 5;
+    border-radius: 2px;
 }
 
-.gridCellSelected:after {
+.cornerTop {
+    top: -4px;
+    left: -4px;
+}
+
+.cornerRight {
+    top: -4px;
+    right: -4px;
+}
+
+.cornerBottom {
+    bottom: -4px;
+    right: -4px;
+}
+
+.cornerLeft {
+    bottom: -4px;
+    left: -4px;
+}
+
+.stitch:hover:after, .gridCellSelected:after, .selectSquare {
     content: "";
     position: absolute;
     top: 0;
     left: 0;
     bottom: 0;
     width: 100%;
-    outline: 2px solid blue;
+    outline: 1px solid #07a0f8;
 }
 
 @media (max-width: 768px) {
