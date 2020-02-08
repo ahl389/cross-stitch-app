@@ -1,4 +1,4 @@
-import React , { Component } from 'react';
+import React, { Component } from 'react';
 import GridCell from '../GridCell/GridCell';
 
 class Grid extends Component {
@@ -16,25 +16,26 @@ class Grid extends Component {
     }
 
     beginDrawing() {
-        this.setState({drawing: true})
+        this.setState({ drawing: true })
     }
 
     endDrawing() {
-        this.setState({drawing: false})
+        this.setState({ drawing: false })
     }
 
     generateCells(r) {
         let cells = [];
 
-        for (let c=0; c < this.columns; c++) {
+        for (let c = 0; c < this.columns; c++) {
             cells.push(
-                <GridCell 
-                    key={c} 
-                    row={r} 
-                    col={c} 
-                    drawing={this.state.drawing} 
+                <GridCell
+                    key={c}
+                    row={r}
+                    col={c}
+                    drawing={this.state.drawing}
                     beginDrawing={this.beginDrawing}
-                    endDrawing={this.endDrawing} />
+                    endDrawing={this.endDrawing}
+                    mode={this.props.mode} />
             )
         }
 
@@ -44,9 +45,9 @@ class Grid extends Component {
     generateRows() {
         let rows = [];
 
-        for (let r=0; r < this.rows; r++) {
+        for (let r = 0; r < this.rows; r++) {
             rows.push(
-                <div className = "module row">
+                <div className="module row">
                     <div class="container">
                         {this.generateCells(r)}
                     </div>
@@ -57,13 +58,13 @@ class Grid extends Component {
         return rows;
     }
 
-    render(){
+    render() {
         return (
             // child components go here
-            <div className="module grid" onMouseLeave={this.endDrawing}> 
+            <div className="module grid" onMouseLeave={this.endDrawing}>
                 {this.generateRows()}
             </div>
-            
+
         )
     }
 }

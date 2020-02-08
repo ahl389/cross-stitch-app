@@ -5,6 +5,20 @@
   border-bottom: $gridlines;
 }
 
+.gridCellSelected {
+    position: relative;
+}
+
+.gridCellSelected:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    outline: 2px solid blue;
+}
+
 @media (max-width: 768px) {
   .gridCell {
     margin-bottom: 0;

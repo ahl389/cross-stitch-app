@@ -1,14 +1,14 @@
-import React , { Component } from 'react';
+import React, { Component } from 'react';
 import Grid from '../Grid/Grid';
 
 class Canvas extends Component {
 
-    
-    render(){
+
+    render() {
         return (
-            <div class = "module w100">
-                <div class = "container">
-                    <Grid />
+            <div class="module w100">
+                <div class="container">
+                    <Grid mode={this.props.mode} />
                 </div>
             </div>
         )
