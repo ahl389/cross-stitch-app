@@ -6,8 +6,8 @@ class Canvas extends Component {
 
     render() {
         return (
-            <div class="module w100">
-                <div class="container">
+            <div className="module w100">
+                <div className="container">
                     <Grid mode={this.props.mode} />
                 </div>
             </div>

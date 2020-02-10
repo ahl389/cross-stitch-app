@@ -63,7 +63,7 @@ class Grid extends Component {
         for (let r = 0; r < this.rows; r++) {
             rows.push(
                 <div className="module row">
-                    <div class="container">
+                    <div className="container">
                         {this.generateCells(r)}
                     </div>
                 </div>

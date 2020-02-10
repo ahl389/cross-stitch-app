@@ -36,7 +36,7 @@ class App extends Component {
                     </div>
 
                     <div className="module w75">
-                        <div class="container">
+                        <div className="container">
                             <Canvas mode={this.state.mode} />
                         </div>
                     </div>
