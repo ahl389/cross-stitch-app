@@ -1,32 +1,43 @@
-import React , { Component } from 'react';
+import React, { Component } from 'react';
 
-class GridCell extends Component { 
-    constructor(props){
+class GridCell extends Component {
+    constructor(props) {
         super(props);
 
         this.state = {
-            fill: '#ffffff'
+            fill: '#ffffff',
+            stitch: false
         }
 
+        this.select = this.select.bind(this);
         this.paintCell = this.paintCell.bind(this);
         this.handleDown = this.handleDown.bind(this);
         this.handleOver = this.handleOver.bind(this);
         this.handleUp = this.handleUp.bind(this);
     }
 
+    select() {
+        if (this.props.mode === 'select' && this.state.stitch) {
+            this.props.select(this.props.row, this.props.col);
+        }
+    }
+
     paintCell() {
         this.setState({
-            fill: '#79cdcd'
+            fill: '#79cdcd',
+            stitch: true
         });
     }
 
-    handleDown(){
-        // when mouse is depressed, change the background, and set parent state to "drawing: true"
-        this.paintCell()
-        this.props.beginDrawing();
+    handleDown() {
+        if (this.props.mode === 'stitch') {
+            // when mouse is depressed, change the background, and set parent state to "drawing: true"
+            this.paintCell()
+            this.props.beginDrawing();
+        }
     }
 
-    handleOver(){
+    handleOver() {
         // when mouse is moving over a cell, if parent state "drawing" is true, change background
         // this way, mouse over will only paint a cell if mouse is also depressed
         if (this.props.drawing) {
@@ -39,16 +50,31 @@ class GridCell extends Component {
         this.props.endDrawing()
     }
 
-    render(){
+    render() {
+        const classNames = `module gridCell ${this.props.target ? 'gridCellSelected' : ''} ${this.state.stitch && this.props.mode === 'select' ? 'stitch' : ''}`;
+
         return (
-            <div 
-                className="module gridCell" 
+            <div
+                className={classNames}
+                onClick={this.select}
                 onMouseDown={this.handleDown}
                 onMouseOver={this.handleOver}
                 onMouseUp={this.handleUp}
-                style={{backgroundColor: this.state.fill}}>
+                style={{ backgroundColor: this.state.fill }}>
+
+                {
+                    this.props.target
+                        ? <div className="selectBox">
+                            <div className="selectCorner cornerTop"></div>
+                            <div className="selectCorner cornerRight"></div>
+                            <div className="selectCorner cornerBottom"></div>
+                            <div className="selectCorner cornerLeft"></div>
+                        </div>
+                        : ''
+                }
             </div>
-                
+
+
         )
     }
 }
