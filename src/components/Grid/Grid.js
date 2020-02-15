@@ -42,7 +42,7 @@ class Grid extends Component {
 
             cells.push(
                 <GridCell
-                    key={c}
+                    key={`${r}-${c}`}
                     row={r}
                     col={c}
                     drawing={this.state.drawing}
